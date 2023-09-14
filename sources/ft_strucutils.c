@@ -92,6 +92,8 @@ t_fdf	*ft_init_struct(char *mapfile)
 	ft_convert_map(data);
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_W, WIN_H, "FdF");
-	data->image = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
+	data->img = ft_init_img(data);
+	data->img->img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
+	data->img->addr = mlx_get_data_addr(data->img->img_ptr, data->img->bits_per_pixel, data->img->line_len, data->img->endian);
 	return (data);
 }

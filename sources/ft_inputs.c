@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:01:13 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/14 10:58:15 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/14 16:37:28 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@ int	handle_inputs(int key, t_fdf *data)
 	if (data == NULL)
 		print_err("PTR TO STRUCT NULL", 0);
 	if (key == XK_Escape)
-	{
-		ft_printf("ESC pressed. Visualizer closing...\n");
-		mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-		exit(0);
-	}
+		destroy(data);
 	if (key == XK_Up)
 		data->shift_y -= 10;
 	if (key == XK_Down)
