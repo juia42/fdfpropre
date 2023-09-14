@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 09:38:31 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/07 12:00:34 by mrabat           ###   ########.fr       */
+/*   Updated: 2023/09/14 10:38:04 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,10 @@ int			ft_print_di(int a);
 int			ft_print_percent(void);
 
 char		*get_next_line(int fd, int last);
+
 int			print_err(char *msg, int options);
 int			ft_arraylen(char **array);
 void		free_array(char **array);
+int			ft_htoi(char *str);
 
 #endif

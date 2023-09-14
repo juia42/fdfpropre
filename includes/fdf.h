@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:18:10 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/13 15:20:21 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/14 09:17:55 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_pt		t_pt;
 
 typedef struct s_fdf
 {
-	char	*map;
+	char	***map;
     int	m_width;
     int	m_height;
     int	zoom;
