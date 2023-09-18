@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 09:38:15 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/18 16:40:03 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:39:06 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,12 @@ void	ligne_bresen(t_fdf *data, t_pt *origine, t_pt *arrivee)
 	error = 0;
 	while (origine->x != arrivee->x && origine->y != arrivee->y)
 	{
+		img_pix_put(data->img, (int)origine->x, (int)origine->y, origine->color);
 		if (origine->x == arrivee->x && origine->y == arrivee->y)
+		{
+			ft_printf("i cut the loop\n");
 			break;
+		}
 		nexterr = error * 2;
 		if (nexterr >= -deltay)
 		{
@@ -105,7 +109,7 @@ void	ligne_bresen(t_fdf *data, t_pt *origine, t_pt *arrivee)
 			error += deltax;
 			origine->y += yincr;
 		}
-		img_pix_put(data->img, (int)origine->x, (int)origine->y, origine->color);
+		//img_pix_put(data->img, (int)origine->x, (int)origine->y, origine->color);
 	}
 }
 

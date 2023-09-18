@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:18:10 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/18 16:28:28 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/18 17:24:52 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ typedef struct	s_image	t_image;
 typedef struct s_fdf
 {
 	char	***map;
-    int	m_width;
-    int	m_height;
+    int	m_cols;
+    int	m_lines;
     int	zoom;
     int	shift_x;
     int	shift_y;

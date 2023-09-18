@@ -8,11 +8,11 @@ void	print_matrix(t_fdf *data)
 
 	i = 0;
 	j = 0;
-	while (i < data->m_height)
+	while (i < data->m_lines)
 	{
 		j = 0;
 		printf("%d", data->z_matrix[i][j++].z);
-		while (j < data->m_width)
+		while (j < data->m_cols)
 		{
 			printf("% 3d", data->z_matrix[i][j].z);
 			j++;
