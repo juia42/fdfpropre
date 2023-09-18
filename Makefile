@@ -30,7 +30,8 @@ LIBMINIDIR_ORIGIN = includes/${MINILIBX}_linux
 
 # Compilateur et options
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -g 
+#-Wall -Werror -Wextra -g
 
 MACFLY =  -lXext -lX11 -lm -lbsd 
 # Dectection du system 

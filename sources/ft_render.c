@@ -32,13 +32,14 @@ void	render_map(t_fdf *data)
 		{
 			if (x < data->m_lines - 1)
 			{
-				ft_printf("x : %d y : %d. \n",x, y);
+				ft_printf("x : %d x+1 : %d. y %d \n", data->z_matrix[x][y].x ,data->z_matrix[x + 1][x].x, data->z_matrix[x + 1][x].y);
+				ft_drawline_1(data, data->z_matrix[x][y].x + 100,data->z_matrix[x][y].x + 100, data->z_matrix[x + 1][y].x + 100) ;
 				ligne_bresen(data, &data->z_matrix[x][y], &data->z_matrix[x + 1][y]);
 				//bresenham(x, y, x + 1, y, data);
 			}
 			if (y < data->m_cols - 1)
 			{
-				ft_printf("y : %d y : %d. \n",x, y);
+				//ft_printf("y : %d y : %d. \n",x, y);
 				ligne_bresen(data, &data->z_matrix[x][y], &data->z_matrix[x][y + 1]);
 				//bresenham(x, y, x, y + 1, data);
 			}
@@ -53,8 +54,10 @@ int render(t_fdf *data)
 	if (data->win_ptr == NULL)
 		return (1);
 	render_background(data, 0x000000);
-	ft_printf("i'm done rendering the background :0\n");
-	render_map(data);
+	ft_printf("Test LINE\n");
+	ft_drawline_1(data, 100, 300, 500);
+	ft_printf("end LINE\n");
+	//render_map(data);
 	ft_printf("i'm done rendering map \n");
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->img_ptr, 0, 0);
 	ft_printf("new frame put to window :)\n");
