@@ -11,38 +11,32 @@ void	print_matrix(t_fdf *data)
 	while (i < data->m_height)
 	{
 		j = 0;
-		ft_printf("%d", data->z_matrix[i][j++]);
+		printf("%d", data->z_matrix[i][j++].z);
 		while (j < data->m_width)
 		{
-			printf("% 3d", data->z_matrix[i][j]);
+			printf("% 3d", data->z_matrix[i][j].z);
 			j++;
 		}
 		printf("\n");
 		i++;
 	}
+	printf("eh c fini les gars\n");
 }
 
-// Count words to see number of value per line.
-int	ft_count_words(char *str)
+int	ft_linelen(char *str) //strlen sans espace, s'arrete a \n ou \0
 {
 	int i;
-	int	is_word;
-	int	cnt;
+	int n;
 
-	cnt = 0;
-	is_word = 0;
-	i = -1;
-	while (str[++i])
+	i = 0;
+	n = 0;
+	while (str[i] && str[i] != '\n')
 	{
-		if (str[i] == '\n' || str[i] == '\t' || str[i] == ' ')
-			is_word = 0;
-		else if (is_word == 0)
-		{
-			is_word = 1;
-			cnt++;
-		}
+		if (str[i] != ' ')
+			n++;
+		i++;
 	}
-	return (cnt);
+	return (n);
 }
 
 // free le contenu de la structure

@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:05:44 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/14 16:37:27 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/18 15:28:49 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@ int main(int argc, char *argv[])
 	data = ft_init_struct(argv[1]);
 	print_matrix(data);
 	mlx_hook(data->win_ptr, 2, 1L<<0, handle_inputs, (void *)data);
-	draw(data);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image, 0, 0);
+	render(data);
 	mlx_loop(data->mlx_ptr);
 //	ft_free_struct(data);
 	return(0);

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+         #
+#    By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 17:51:43 by mrabat            #+#    #+#              #
-#    Updated: 2023/09/07 09:49:43 by mrabat           ###   ########.fr        #
+#    Updated: 2023/09/18 13:17:23 by hchauvin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,8 +30,7 @@ LIBMINIDIR_ORIGIN = includes/${MINILIBX}_linux
 
 # Compilateur et options
 CC = gcc
-CFLAGS = -g
-# -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g
 
 MACFLY =  -lXext -lX11 -lm -lbsd 
 # Dectection du system 

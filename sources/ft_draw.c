@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 09:38:15 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/14 16:37:26 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/18 16:40:03 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,23 @@
 
 float	mod(float i)
 {
-	if (i < 0)
-		return (-i);
-	else
+	if (i >= 0)
 		return (i);
+	return (-i);
 }
 
+int	guess_incr(float delta)
+{
+	if (delta >= 0)
+		return (1);
+	return (-1);
+}
+/*
 void	isometric(float *x, float *y, int z, t_fdf *data)
 {
 	*x = (*x - *y) * cos(0.8);
 	*y = (*x + *y) * sin(0.8) - z;
 }
-
 void	bresenham(float x, float y, float x1, float y1, t_fdf *data)
 {
 	float	x_step;
@@ -68,24 +73,55 @@ void	bresenham(float x, float y, float x1, float y1, t_fdf *data)
 		y += y_step;
 	}
 }
-
-void	draw(t_fdf *data)
+*/
+void	ligne_bresen(t_fdf *data, t_pt *origine, t_pt *arrivee)
 {
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < data->m_height)
+	float	deltax;
+	float	deltay;
+	//float	slope;
+	float	error;
+	float	nexterr;
+	int		xincr;
+	int		yincr;
+	
+	deltax = abs(arrivee->x - origine->x);
+	deltay = abs(arrivee->y - origine->y);
+	xincr = guess_incr(deltax);
+	yincr = guess_incr(deltay);
+	//slope = deltax / deltay;
+	error = 0;
+	while (origine->x != arrivee->x && origine->y != arrivee->y)
 	{
-		x = 0;
-		while (x < data->m_width)
+		if (origine->x == arrivee->x && origine->y == arrivee->y)
+			break;
+		nexterr = error * 2;
+		if (nexterr >= -deltay)
 		{
-			if (x < data->m_width - 1)
-				bresenham(x, y, x + 1, y, data);
-			if (y < data->m_height - 1)
-				bresenham(x, y, x, y + 1, data);
-			x++;
+			error -= deltay;
+			origine->x += xincr;
 		}
-		y++;
+		else if (nexterr < deltax)
+		{
+			error += deltax;
+			origine->y += yincr;
+		}
+		img_pix_put(data->img, (int)origine->x, (int)origine->y, origine->color);
+	}
+}
+
+void	img_pix_put(t_image *img, int x, int y, int color)
+{
+	char	*pixel;
+	int	i;
+
+	i = img->bpp - 8;
+	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	while (i >= 0)
+	{
+		if (img->endian != 0)
+			*pixel++ = (color >> i) & 0xFF;
+		else
+			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
+		i -= 8;
 	}
 }

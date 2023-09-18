@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:01:13 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/14 16:37:28 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/18 13:24:15 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	handle_inputs(int key, t_fdf *data)
 		data->zoom += 5;
 	if (key == XK_KP_Subtract)
 		data->zoom -= 5;
-	mlx_clear_window(data->mlx_ptr, data->win_ptr);
-	draw(data);
+	render(data);
 	return (0);
 }

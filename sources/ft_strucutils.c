@@ -1,26 +1,9 @@
 #include "../includes/fdf.h"
 
-int	ft_linelen(char *str) //strlen sans espace, s'arrete a \n ou \0
-{
-	int i;
-	int n;
-
-	i = 0;
-	n = 0;
-	while (str[i] && str[i] != '\n')
-	{
-		if (str[i] != ' ')
-			n++;
-		i++;
-	}
-	return (n);
-}
-
 void	ft_get_map(t_fdf *data, char *mapfile)
 {
 	int	fd;
 	char	*line;
-	char	*tmp;
 	int i;
 
 	i = 0;
@@ -73,9 +56,11 @@ void	ft_convert_map(t_fdf *data)
 			tab = ft_split(data->map[i][j], ',');
 			data->z_matrix[i][j].z = ft_atoi(tab[0]);
 			data->z_matrix[i][j].color = 0;
+			data->z_matrix[i][j].x = j;
+			data->z_matrix[i][j].y = i;
 			if (tab[1])
 				data->z_matrix[i][j].color = ft_htoi(tab[1] + 2);
-			printf("matrix: %d|%d\n", data->z_matrix[i][j].z, data->z_matrix[i][j].color);
+			//printf("matrix: %d|%d\n", data->z_matrix[i][j].z, data->z_matrix[i][j].color);
 			j++;
 		}
 		i++;
@@ -90,10 +75,21 @@ t_fdf	*ft_init_struct(char *mapfile)
 	ft_get_map(data, mapfile);
 	//faire la verif de map carree avant, risque de sigsegv
 	ft_convert_map(data);
+	data->zoom = 0;
+	data->shift_x = 150;
+	data->shift_y = 150;
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_W, WIN_H, "FdF");
 	data->img = ft_init_img(data);
-	data->img->img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
-	data->img->addr = mlx_get_data_addr(data->img->img_ptr, data->img->bits_per_pixel, data->img->line_len, data->img->endian);
 	return (data);
+}
+
+t_image	*ft_init_img(t_fdf *data)
+{
+	t_image	*image;
+
+	image = malloc(sizeof(t_image));
+	image->img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
+	image->addr = mlx_get_data_addr(image->img_ptr, &(image->bpp), &(image->line_len), &(image->endian));
+	return (image);
 }
