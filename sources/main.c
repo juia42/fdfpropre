@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:05:44 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/18 17:23:51 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:45:08 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ int main(int argc, char *argv[])
 	data = ft_init_struct(argv[1]);
 	print_matrix(data);
 	mlx_hook(data->win_ptr, 2, 1L<<0, handle_inputs, (void *)data);
-	render(data);
 	mlx_loop(data->mlx_ptr);
-//	ft_free_struct(data);
 	return(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inputs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:01:13 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/18 17:23:35 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:45:40 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,5 @@ int	handle_inputs(int key, t_fdf *data)
 		data->zoom += 5;
 	if (key == XK_KP_Subtract)
 		data->zoom -= 5;
-	render(data);
 	return (0);
 }

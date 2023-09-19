@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:18:10 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/18 17:24:52 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/19 13:16:00 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ int		destroy(t_fdf *data);
 //line 
 void ft_drawline_1(t_fdf *data, int start, int x2, int y2);
 void ft_drawline_2(t_fdf *data, int start, int x2, int y2);
+void ft_drawmap(t_fdf *data);
 // Render
 void	img_pix_put(t_image *img, int x, int y, int color);	// Draw pixel on image.
 void	bresenham(float x, float y, float x1, float y1, t_fdf *data);	// Line drawing algorithm
@@ -76,7 +77,7 @@ void	ligne_bresen(t_fdf *data, t_pt *origine, t_pt *arrivee); 		// Line drawing 
 int		guess_incr(float delta);
 
 void	render_background(t_fdf *data, int color);	// Draws background.
-void	render_map(t_fdf *data);				// Draws the whole map.
+void	render_map(t_fdf *data); 				// Draws the whole map.
 int		render(t_fdf *data);					// Draws everything
 // Debug
 void	print_matrix(t_fdf *data);				// Prints map in terminal.
