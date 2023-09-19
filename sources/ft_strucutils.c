@@ -1,5 +1,6 @@
 #include "../includes/fdf.h"
 
+
 void	ft_get_map(t_fdf *data, char *mapfile)
 {
 	int	fd;
@@ -62,6 +63,7 @@ void	ft_convert_map(t_fdf *data)
 				data->z_matrix[i][j].color = ft_htoi(tab[1] + 2);
 			//printf("matrix: %d|%d\n", data->z_matrix[i][j].z, data->z_matrix[i][j].color);
 			j++;
+			free_array(tab);
 		}
 		i++;
 	}
