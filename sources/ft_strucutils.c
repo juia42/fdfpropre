@@ -61,7 +61,6 @@ void	ft_convert_map(t_fdf *data)
 			data->z_matrix[i][j].y = i;
 			if (tab[1])
 				data->z_matrix[i][j].color = ft_htoi(tab[1] + 2);
-			//printf("matrix: %d|%d\n", data->z_matrix[i][j].z, data->z_matrix[i][j].color);
 			j++;
 			free_array(tab);
 			tab = NULL;
@@ -78,7 +77,7 @@ t_fdf	*ft_init_struct(char *mapfile)
 	ft_get_map(data, mapfile);
 	//faire la verif de map carree avant, risque de sigsegv
 	ft_convert_map(data);
-	data->zoom = 0;
+	data->zoom = 10;
 	data->shift_x = 150;
 	data->shift_y = 150;
 	data->mlx_ptr = mlx_init();

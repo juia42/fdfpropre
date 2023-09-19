@@ -30,11 +30,11 @@ typedef struct	s_image	t_image;
 typedef struct s_fdf
 {
 	char	***map;
-    int	m_cols;
-    int	m_lines;
-    int	zoom;
-    int	shift_x;
-    int	shift_y;
+    int		m_cols;
+    int		m_lines;
+    float	zoom;
+    int		shift_x;
+    int		shift_y;
     void    *mlx_ptr;
     void    *win_ptr;
 	t_image	*img;
