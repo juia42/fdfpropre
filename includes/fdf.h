@@ -69,7 +69,7 @@ int		destroy(t_fdf *data);
 //line 
 
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
-
+void	ft_draw_map(t_fdf *data);
 
 // Render
 // Debug

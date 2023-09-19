@@ -23,8 +23,7 @@ int main(int argc, char *argv[])
 	}
 	data = ft_init_struct(argv[1]);
 	print_matrix(data);
-	my_mlx_pixel_put(data->img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->img_ptr, 0, 0);
+	ft_draw_map(data);
 	mlx_hook(data->win_ptr, 2, 1L<<0, handle_inputs, (void *)data);
 	mlx_loop(data->mlx_ptr);
 	destroy(data);

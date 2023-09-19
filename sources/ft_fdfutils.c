@@ -61,7 +61,6 @@ void	free_map_data(t_fdf *data)
 	j = 0;
 	while ( data->map[i])
 	{
-		printf("%d.....\n",i);
 		j = 0;
 		while (data->map[i][j])
 		{
