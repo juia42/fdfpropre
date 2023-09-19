@@ -59,19 +59,24 @@ void	free_map_data(t_fdf *data)
 
 	i = 0;
 	j = 0;
-	while (data->map[i] != NULL)
+	while ( data->map[i])
 	{
+		printf("%d.....\n",i);
 		j = 0;
 		while (data->map[i][j])
 		{
 			free(data->map[i][j]);
+			data->map[i][j] = NULL;
 			j++;
 		}
 		free(data->map[i]); 
+		data->map[i] = NULL;
 		i++;
 	}
 	free(data->map);
+	data->map = NULL;
 	//free le reste de la structure
+
 }
 
 // destruit tout ce qui est lie a la mlx et free la structure
@@ -87,6 +92,7 @@ int	destroy(t_fdf *data)
 	free(data->mlx_ptr);
 	free(data->img);
 	free(data);
+	data = NULL;
 	exit (0);
 	return (0);
 }

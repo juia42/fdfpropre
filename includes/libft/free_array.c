@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchauvin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 10:21:43 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/08/03 10:22:36 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/19 17:01:27 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void	free_array(char **array)
 
 	i = -1;
 	while (array[++i])
+	{
 		free(array[i]);
+		array[i] = NULL;
+	}
 	free(array);
 	array = NULL;
 }

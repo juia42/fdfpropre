@@ -8,8 +8,7 @@ void	ft_get_map(t_fdf *data, char *mapfile)
 	int i;
 
 	i = 0;
-	data->map = malloc(sizeof(char **) * data->m_lines + 1);
-	data->map[data->m_lines] = NULL;
+	data->map = malloc(sizeof(char **) * (data->m_lines + 1));
 	fd = open(mapfile, O_RDONLY);
 	line = get_next_line(fd, 0);
 	data->m_cols = ft_linelen(line);
@@ -20,6 +19,7 @@ void	ft_get_map(t_fdf *data, char *mapfile)
 		line = get_next_line(fd, 0);
 		i++;
 	}
+	data->map[i] = NULL;
 	close(fd);
 }
 
@@ -48,7 +48,7 @@ void	ft_convert_map(t_fdf *data)
 
 	i = 0;
 	data->z_matrix = malloc(sizeof(t_pt *) * data->m_lines);
-	while (data->map[i])
+	while (data->map && data->map[i])
 	{
 		j = 0;
 		data->z_matrix[i] = malloc(sizeof(t_pt) * data->m_cols);
@@ -64,6 +64,7 @@ void	ft_convert_map(t_fdf *data)
 			//printf("matrix: %d|%d\n", data->z_matrix[i][j].z, data->z_matrix[i][j].color);
 			j++;
 			free_array(tab);
+			tab = NULL;
 		}
 		i++;
 	}
