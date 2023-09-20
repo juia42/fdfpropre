@@ -75,7 +75,6 @@ t_fdf	*ft_init_struct(char *mapfile)
 	data = malloc(sizeof(t_fdf));
 	get_height(data, mapfile);
 	ft_get_map(data, mapfile);
-	//faire la verif de map carree avant, risque de sigsegv
 	ft_convert_map(data);
 	data->zoom = 10;
 	data->shift_x = 150;

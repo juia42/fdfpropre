@@ -70,7 +70,7 @@ int		destroy(t_fdf *data);
 
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	ft_draw_map(t_fdf *data);
-
+int		ft_calcul_color(int z);
 // Render
 // Debug
 void	print_matrix(t_fdf *data);				// Prints map in terminal.
