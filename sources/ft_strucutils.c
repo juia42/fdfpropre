@@ -77,6 +77,7 @@ t_fdf	*ft_init_struct(char *mapfile)
 	ft_get_map(data, mapfile);
 	ft_convert_map(data);
 	data->zoom = 10;
+	data->angle = 30;
 	data->shift_x = 150;
 	data->shift_y = 150;
 	data->mlx_ptr = mlx_init();

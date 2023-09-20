@@ -11,3 +11,10 @@ bleu = bleu * z / 9;
 
 return ((rouge << 16) | (vert << 8) | bleu);
 }
+
+void	ft_trans_to_isometric(t_pt pt, int angle)
+{
+	pt.x = pt.x - pt.z * cos(angle);
+	pt.y = pt.y - pt.z * cos(angle);
+	printf("x in fun %d", pt.x );
+}

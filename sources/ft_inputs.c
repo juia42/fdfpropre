@@ -19,7 +19,10 @@ int	handle_inputs(int key, t_fdf *data)
 	if (data == NULL)
 		print_err("PTR TO STRUCT NULL", 0);
 	if (key == XK_Escape)
-		destroy(data);
+	{
+			destroy(data);
+			return (0);
+	}
 	if (key == XK_Up)
 		data->shift_y -= 10;
 	if (key == XK_Down)

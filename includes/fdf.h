@@ -37,6 +37,7 @@ typedef struct s_fdf
     int		shift_y;
     void    *mlx_ptr;
     void    *win_ptr;
+	int		angle;
 	t_image	*img;
     t_pt	**z_matrix;
 }   t_fdf;
@@ -71,6 +72,7 @@ int		destroy(t_fdf *data);
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	ft_draw_map(t_fdf *data);
 int		ft_calcul_color(int z);
+void	ft_trans_to_isometric(t_pt pt, int angle);
 // Render
 // Debug
 void	print_matrix(t_fdf *data);				// Prints map in terminal.
