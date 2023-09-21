@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 	}
 	data = ft_init_struct(argv[1]);
 	//print_matrix(data);
-	ft_draw_map(data);
+	render(data);
 	mlx_hook(data->win_ptr, 2, 1L<<0, handle_inputs, (void *)data);
 	mlx_loop(data->mlx_ptr);
 	destroy(data);
