@@ -11,7 +11,9 @@ int	ft_calcul_color(int z)
 	rouge = (couleur >> 16) & 0xFF;
 	vert = (couleur >> 8) & 0xFF;
 	bleu = couleur & 0xFF;
-	bleu = bleu * z / 9;
+	double scale;
+	scale = (double)z / 9.0;
+	bleu = (int)(bleu * scale);
 	return ((rouge << 16) | (vert << 8) | bleu);
 }
 // La tienne qui fait un resultat drole

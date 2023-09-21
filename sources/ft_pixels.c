@@ -39,7 +39,24 @@ void ft_tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
     }
 }
 
+// Deplace gauche droite haut bas par rapport a l'ecran
+void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
+{
+    pixel1.x *= data->zoom;
+    pixel1.y *= data->zoom;
+    pixel2.x *= data->zoom;
+    pixel2.y *= data->zoom;
+    ft_trans_to_isometric(&pixel1, data->angle); // Utilisez l'angle isométrique correct ici
+    ft_trans_to_isometric(&pixel2, data->angle); // Utilisez l'angle isométrique correct ici
+    pixel1.x += data->shift_x;
+    pixel1.y += data->shift_y;
+    pixel2.x += data->shift_x;
+    pixel2.y += data->shift_y;
+    ft_tracer_ligne(data, pixel1, pixel2);
+}
 
+// Deplace gauche droite haut bas par rapport aux cotes de la map.
+/*
 void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 {
     pixel1.x = (int)(pixel1.x * data->zoom) + data->shift_x;
@@ -50,7 +67,7 @@ void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 	ft_trans_to_isometric(&pixel2, data->angle);
 	ft_tracer_ligne(data, pixel1, pixel2);
 }
-
+*/
 void ft_draw_map(t_fdf *data)
 {
 	int	line;
