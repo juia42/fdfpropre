@@ -15,22 +15,22 @@ int	ft_calcul_color(int z)
 	return ((rouge << 16) | (vert << 8) | bleu);
 }
 // La tienne qui fait un resultat drole
-
-void	ft_trans_to_isometric(t_pt *pt, int angle)
-{
-	pt->x = (pt->x - pt->z) * cos(angle);
-	pt->y = (pt->y + pt->z) * cos(angle) - pt->z;
-}
-
-// La vraie qui fonctionne pas encore
-// Trouver l'endroit ou appliquer le calcul.
 /*
 void	ft_trans_to_isometric(t_pt *pt, int angle)
 {
-	pt->x = (pt->x - pt->y) * cos(angle);
-	pt->y = (pt->x + pt->y) * sin(angle) - pt->z;
+	pt->x = pt->x - pt->z * cos(angle);
+	pt->y = pt->y + pt->z * cos(angle) - pt->z;
 }
 */
+// La vraie qui fonctionne pas encore
+void	ft_trans_to_isometric(t_pt *pt, int angle)
+{
+	double	rad_angle = angle * M_PI / 180.0;
+	double	temp_x = pt->x;
+	pt->x = (temp_x - pt->y) * cos(rad_angle);
+	pt->y = (temp_x + pt->y) * sin(rad_angle) - pt->z;
+}
+
 int		ft_calcul_the_way(int p1, int p2)
 {
 	if (p1 < p2)

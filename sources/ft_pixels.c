@@ -39,14 +39,15 @@ void ft_tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
     }
 }
 
+
 void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 {
     pixel1.x = (int)(pixel1.x * data->zoom) + data->shift_x;
     pixel1.y = (int)(pixel1.y * data->zoom) + data->shift_y;
     pixel2.x = (int)(pixel2.x * data->zoom) + data->shift_x;
     pixel2.y = (int)(pixel2.y * data->zoom) + data->shift_y;
-	ft_trans_to_isometric(&pixel1, 0.8);
-	ft_trans_to_isometric(&pixel2, 0.8);
+	ft_trans_to_isometric(&pixel1, data->angle);
+	ft_trans_to_isometric(&pixel2, data->angle);
 	ft_tracer_ligne(data, pixel1, pixel2);
 }
 
