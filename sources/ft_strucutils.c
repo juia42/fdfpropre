@@ -56,7 +56,7 @@ void	ft_convert_map(t_fdf *data)
 		{
 			tab = ft_split(data->map[i][j], ',');
 			data->z_matrix[i][j].z = ft_atoi(tab[0]);
-			data->z_matrix[i][j].color = 0;
+			data->z_matrix[i][j].color = 0x00219CFF;
 			data->z_matrix[i][j].x = j;
 			data->z_matrix[i][j].y = i;
 			if (tab[1])
@@ -80,6 +80,7 @@ t_fdf	*ft_init_struct(char *mapfile)
 	data->angle = 30;
 	data->shift_x = 500;
 	data->shift_y = 150;
+	data->profondeur = 2;
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_W, WIN_H, "FdF");
 	data->img = ft_init_img(data);

@@ -33,6 +33,14 @@ int	handle_inputs(int key, t_fdf *data)
 		data->zoom += 1;
 	if ((key == XK_KP_Subtract) || (key == 111))
 		data->zoom -= 1;
+	if ((key == 112))
+		data->profondeur += 1;
+	if ((key == 59))
+		data->profondeur -= 1;
+	if ((key == 107))
+		data->angle += 1;
+	if ((key == 108))
+		data->angle -= 1;
 	render(data);
 	return (0);
 }
