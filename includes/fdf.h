@@ -6,7 +6,7 @@
 /*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:18:10 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/19 17:13:50 by mrabat           ###   ########.fr       */
+/*   Updated: 2023/09/21 11:34:42 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,10 @@ int		destroy(t_fdf *data);
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	ft_draw_map(t_fdf *data);
 int		ft_calcul_color(int z);
-void	ft_trans_to_isometric(t_pt pt, int angle);
+void	ft_trans_to_isometric(t_pt *pt, int angle);
 int		ft_calcul_the_way(int p1, int p2);
 // Render
+int	render(t_fdf *data);
 // Debug
 void	print_matrix(t_fdf *data);				// Prints map in terminal.
 
