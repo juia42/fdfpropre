@@ -14,8 +14,6 @@
 
 int	handle_inputs(int key, t_fdf *data)
 {
-	ft_printf("%d\n", key);
-	printf("ave %f\n", data->zoom);
 	if (data == NULL)
 		print_err("PTR TO STRUCT NULL", 0);
 	if (key == XK_Escape)
@@ -35,9 +33,6 @@ int	handle_inputs(int key, t_fdf *data)
 		data->zoom += 1;
 	if ((key == XK_KP_Subtract) || (key == 111))
 		data->zoom -= 1;
-	
-	
-	printf("apre %f\n", data->zoom);
 	mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
 	data->img->img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);

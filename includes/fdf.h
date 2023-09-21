@@ -73,6 +73,7 @@ void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	ft_draw_map(t_fdf *data);
 int		ft_calcul_color(int z);
 void	ft_trans_to_isometric(t_pt pt, int angle);
+int		ft_calcul_the_way(int p1, int p2);
 // Render
 // Debug
 void	print_matrix(t_fdf *data);				// Prints map in terminal.

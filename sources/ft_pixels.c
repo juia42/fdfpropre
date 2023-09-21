@@ -8,12 +8,12 @@ void	my_mlx_pixel_put(t_image *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-void tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
+void ft_tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 {
     int dx = abs(pixel2.x - pixel1.x);
     int dy = abs(pixel2.y - pixel1.y);
-    int sx = (pixel1.x < pixel2.x) ? 1 : -1;
-    int sy = (pixel1.y < pixel2.y) ? 1 : -1;
+    int sx = ft_calcul_the_way(pixel1.x,pixel2.x);
+    int sy = ft_calcul_the_way(pixel1.y,pixel2.y);
     int err = dx - dy;
     int err2;
 	int color = 0x557FF100;
@@ -39,13 +39,15 @@ void tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
     }
 }
 
-void ft_draw_line_between_pixels(t_fdf *data, t_pt pixel1, t_pt pixel2)
+void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 {
     pixel1.x = (int)(pixel1.x * data->zoom) + data->shift_x;
     pixel1.y = (int)(pixel1.y * data->zoom) + data->shift_y;
     pixel2.x = (int)(pixel2.x * data->zoom) + data->shift_x;
     pixel2.y = (int)(pixel2.y * data->zoom) + data->shift_y;
-    tracer_ligne(data, pixel1, pixel2);
+	ft_trans_to_isometric(pixel1, 0.8);
+	ft_trans_to_isometric(pixel2, 0.8);
+	ft_tracer_ligne(data, pixel1, pixel2);
 }
 
 void ft_draw_map(t_fdf *data)
@@ -60,11 +62,11 @@ void ft_draw_map(t_fdf *data)
 		while(col < data->m_cols)
 		{
             if (col < data->m_cols - 1) {
-                ft_draw_line_between_pixels(data, data->z_matrix[line][col], data->z_matrix[line][col + 1]);
+                ft_prepare_ligne(data, data->z_matrix[line][col], data->z_matrix[line][col + 1]);
             }
 
             if (line < data->m_lines - 1) {
-                ft_draw_line_between_pixels(data, data->z_matrix[line][col], data->z_matrix[line + 1][col]);
+                ft_prepare_ligne(data, data->z_matrix[line][col], data->z_matrix[line + 1][col]);
             }
 			col++;
 		}
