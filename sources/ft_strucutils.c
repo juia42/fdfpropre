@@ -4,6 +4,7 @@ void	ft_get_map(t_fdf *data, char *mapfile)
 {
 	int	fd;
 	char	*line;
+	char	*tmpline;
 	int i;
 	char	**tab;
 
@@ -11,9 +12,10 @@ void	ft_get_map(t_fdf *data, char *mapfile)
 	data->map = malloc(sizeof(char **) * (data->m_lines + 1));
 	fd = open(mapfile, O_RDONLY);
 	line = get_next_line(fd, 0);
-	tab = ft_split(line, ' ');
+	tmpline = line;
+	tab = ft_split(tmpline, ' ');
 	data->m_cols = ft_arraylen(tab);
-	//data->m_cols = ft_linelen(line);
+	free_array(tab);
 	while (line)
 	{
 		data->map[i] = ft_split(line, ' ');
