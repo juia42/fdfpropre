@@ -73,7 +73,7 @@ int		destroy(t_fdf *data);
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	ft_draw_map(t_fdf *data);
 int		ft_calcul_color(int z, int color);
-void	ft_trans_to_isometric(t_pt *pt, int angle, int profondeur);
+void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int profondeur);
 t_pt	ft_calcul_the_way(t_pt p1,t_pt p2);
 t_pt	ft_calculabs(t_pt p1, t_pt p2);
 void	ft_gesterror(int *err, t_pt d, t_pt s, t_pt *pixel1);

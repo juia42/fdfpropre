@@ -78,10 +78,10 @@ t_fdf	*ft_init_struct(char *mapfile)
 	get_height(data, mapfile);
 	ft_get_map(data, mapfile);
 	ft_convert_map(data);
-	data->zoom = 20;
-	data->angle = 30;
-	data->shift_x = 500;
-	data->shift_y = 150;
+	data->zoom = 10;
+	data->angle = 45;
+	data->shift_x = 0;
+	data->shift_y = 0;
 	data->profondeur = 2;
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_W, WIN_H, "FdF");

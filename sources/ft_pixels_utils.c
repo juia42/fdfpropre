@@ -20,24 +20,38 @@ int	ft_calcul_color(int z,int color)
 	}	
 	return (color);
 }
-// La tienne qui fait un resultat drole
 /*
-void	ft_trans_to_isometric(t_pt *pt, int angle)
-{
-	pt->x = pt->x - pt->z * cos(angle);
-	pt->y = pt->y + pt->z * cos(angle) - pt->z;
+void ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int profondeur) {
+    double angleRadians = angle * M_PI / 180.0;
+    int x = pt->x - (data->m_lines / 2);
+    int y = pt->y - (data->m_cols / 2);
+    pt->x = (data->m_lines / 2) + (int)(x * cos(angleRadians) - y * sin(angleRadians));
+    pt->y = (data->m_cols / 2) + (int)(x * sin(angleRadians) + y * cos(angleRadians));
 }
 */
-void	ft_trans_to_isometric(t_pt *pt, int angle, int profondeur)
+
+void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int profondeur)
 {
-	//double	rad_angle = angle * M_PI / 180.0;
-	//double	temp_x = pt->x;
-	//pt->x = temp_x - pt->y * cos(rad_angle);
-	//pt->y = temp_x + pt->y * sin(rad_angle) - (pt->z * profondeur);
-	pt->x = pt->x - pt->y * cos(angle);
-	pt->y = pt->x + pt->y * sin(angle) - (pt->z * profondeur);
+	(void*)data;
+	double	rad_angle = angle * M_PI / 180.0;
+	double	temp_x = pt->x;
+	pt->x = temp_x - pt->y * cos(rad_angle);
+	pt->y = temp_x + pt->y * sin(rad_angle) - (pt->z * profondeur);
 }
 
+/*
+void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, int angle, int profondeur)
+{
+	double	rad_angle = angle * M_PI / 180.0;
+	double	rad_2 = (angle * 2) * M_PI / 180.0;
+	double	temp_x = pt->x;
+	pt->x = cos(rad_angle) * (pt->y - data->m_lines / 2) 
+			- cos(rad_angle) * (pt->x - data->m_cols / 2);
+	pt->y = -pt->z * cos(rad_2) * 2 
+			+ sin(rad_angle) * (pt->x - data->m_lines / 2)
+			+ sin(rad_angle) * (pt->y - data->m_cols / 2);
+}
+*/
 t_pt	ft_calcul_the_way(t_pt p1, t_pt p2)
 {
 	t_pt	s;
@@ -70,12 +84,12 @@ void	ft_gesterror(int *err, t_pt d, t_pt s, t_pt *pixel1)
 	y = pixel1->y;
 
 	err2 = 2 * (*err);
-    if (err2 > -d.y)
+    if (err2 > -d.x)
     {
     	*err -= d.y;
     	pixel1->x = x + (int)s.x;
     }
-    if (err2 < d.x)
+    if (err2 < d.y)
     {
     	*err += d.x;
     	pixel1->y = y + (int)s.y;

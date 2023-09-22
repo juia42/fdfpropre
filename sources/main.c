@@ -16,6 +16,7 @@ void	ft_zoomauto()
 {
 
 }
+
 int main(int argc, char *argv[])
 {
 	t_fdf	*data;
@@ -26,7 +27,7 @@ int main(int argc, char *argv[])
 		return(1);
 	}
 	data = ft_init_struct(argv[1]);
-	//data->zoom = (( WIN_W / data->m_lines + WIN_H / data->m_cols) / 5);
+	data->zoom = (( WIN_W / data->m_lines + WIN_H / data->m_cols) / 5);
 	print_matrix(data);
 	render(data);
 	mlx_hook(data->win_ptr, 2, 1L<<0, handle_inputs, (void *)data);
