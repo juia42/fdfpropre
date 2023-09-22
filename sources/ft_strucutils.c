@@ -1,6 +1,5 @@
 #include "../includes/fdf.h"
 
-
 void	ft_get_map(t_fdf *data, char *mapfile)
 {
 	int	fd;

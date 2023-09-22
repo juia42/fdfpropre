@@ -27,7 +27,6 @@ void	ft_trans_to_isometric(t_pt *pt, int angle)
 	pt->y = pt->y + pt->z * cos(angle) - pt->z;
 }
 */
-// La vraie qui fonctionne pas encore
 void	ft_trans_to_isometric(t_pt *pt, int angle, int profondeur)
 {
 	double	rad_angle = angle * M_PI / 180.0;

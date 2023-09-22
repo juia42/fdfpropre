@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inputs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:01:13 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/21 11:26:09 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/22 08:53:49 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 
 int	handle_inputs(int key, t_fdf *data)
 {
+	ft_printf("%d\n", key);
 	if (data == NULL)
 		print_err("PTR TO STRUCT NULL", 0);
 	if (key == XK_Escape)
 	{
-			destroy(data);
-			return (0);
+		destroy(data);
+		return (0);
 	}
 	if (key == XK_Up)
 		data->shift_y -= 10;
@@ -33,13 +34,13 @@ int	handle_inputs(int key, t_fdf *data)
 		data->zoom += 1;
 	if ((key == XK_KP_Subtract) || (key == 111))
 		data->zoom -= 1;
-	if ((key == 112))
+	if ((key == 112))	// p
 		data->profondeur += 1;
-	if ((key == 59))
+	if ((key == 59))	// ;
 		data->profondeur -= 1;
-	if ((key == 107))
+	if ((key == 107))	// k
 		data->angle += 1;
-	if ((key == 108))
+	if ((key == 108))	// l
 		data->angle -= 1;
 	render(data);
 	return (0);

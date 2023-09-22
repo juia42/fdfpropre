@@ -32,7 +32,7 @@ void ft_tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
     }
 }
 
-// Deplace gauche droite haut bas par rapport a l'ecran
+// Deplacement relatif aux birds de l'ecran.
 void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 {
 	pixel1.x *= data->zoom;
@@ -47,8 +47,7 @@ void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
     pixel2.y += data->shift_y;
     ft_tracer_ligne(data, pixel1, pixel2);
 }
-
-// Deplace gauche droite haut bas par rapport aux cotes de la map.
+// Deplacement relatif aux bords de la map.
 /*
 void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 {
@@ -83,6 +82,5 @@ void ft_draw_map(t_fdf *data)
 		}
 		line++;
 	}
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->img_ptr, 0, 0);
 }
 
