@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:01:13 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/22 10:25:04 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/22 13:47:20 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	handle_inputs(int key, t_fdf *data)
 	if (key == XK_Right)
 		data->shift_x += 10;
 	if ((key == XK_KP_Add) || (key == 105))
-		data->zoom += 1;
+		data->zoom += 10;
 	if ((key == XK_KP_Subtract) || (key == 111))
-		data->zoom -= 1;
+		data->zoom -= 10;
 	if ((key == 112))	// p
 		data->profondeur += 1;
 	if ((key == 59))	// ;

@@ -28,9 +28,7 @@ void ft_tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
             break;
 		ft_gesterror(&err, d, s, &pixel1);
         if ((pixel1.x > 0 && pixel1.x < WIN_W)  && (pixel1.y > 0 && pixel1.y < WIN_H))
-		{
 			my_mlx_pixel_put(data->img, pixel1.x, pixel1.y, pixel2.color);
-		}
 	}
 }
 

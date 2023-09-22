@@ -5,12 +5,15 @@ void	ft_get_map(t_fdf *data, char *mapfile)
 	int	fd;
 	char	*line;
 	int i;
+	char	**tab;
 
 	i = 0;
 	data->map = malloc(sizeof(char **) * (data->m_lines + 1));
 	fd = open(mapfile, O_RDONLY);
 	line = get_next_line(fd, 0);
-	data->m_cols = ft_linelen(line);
+	tab = ft_split(line, ' ');
+	data->m_cols = ft_arraylen(tab);
+	//data->m_cols = ft_linelen(line);
 	while (line)
 	{
 		data->map[i] = ft_split(line, ' ');

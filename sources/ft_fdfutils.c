@@ -31,6 +31,8 @@ int	ft_linelen(char *str) //strlen sans espace, s'arrete a \n ou \0
 	n = 0;
 	while (str[i] && str[i] != '\n')
 	{
+		if (str[i] == ',')
+			i+=9;
 		if (str[i] != ' ' && str[i] != '-')
 			n++;
 		i++;
@@ -58,7 +60,7 @@ void	free_map_data(t_fdf *data)
 
 	i = 0;
 	j = 0;
-	while ( data->map[i])
+	while (data->map[i])
 	{
 		j = 0;
 		while (data->map[i][j])

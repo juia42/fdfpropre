@@ -10,7 +10,7 @@ int	ft_calcul_color(int z,int color)
 	color = color;
 	if (z > 0)
 	{	
-		color = "0x00B0F2B6;";
+		color = 0x00B0F2B6;
 		couleur = color;
 		rouge = (couleur >> 16) & 0xFF;
 		vert = (couleur >> 8) & 0xFF;
@@ -30,10 +30,12 @@ void	ft_trans_to_isometric(t_pt *pt, int angle)
 */
 void	ft_trans_to_isometric(t_pt *pt, int angle, int profondeur)
 {
-	double	rad_angle = angle * M_PI / 180.0;
-	double	temp_x = pt->x;
-	pt->x = (temp_x - pt->y) * cos(rad_angle);
-	pt->y = (temp_x + pt->y) * sin(rad_angle) - (pt->z * profondeur);
+	//double	rad_angle = angle * M_PI / 180.0;
+	//double	temp_x = pt->x;
+	//pt->x = temp_x - pt->y * cos(rad_angle);
+	//pt->y = temp_x + pt->y * sin(rad_angle) - (pt->z * profondeur);
+	pt->x = pt->x - pt->y * cos(angle);
+	pt->y = pt->x + pt->y * sin(angle) - (pt->z * profondeur);
 }
 
 t_pt	ft_calcul_the_way(t_pt p1, t_pt p2)
