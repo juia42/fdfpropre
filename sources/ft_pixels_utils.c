@@ -10,7 +10,8 @@ int	ft_calcul_color(int z,int color)
 	color = color;
 	if (z > 0)
 	{	
-		couleur= color;
+		color = "0x00B0F2B6;";
+		couleur = color;
 		rouge = (couleur >> 16) & 0xFF;
 		vert = (couleur >> 8) & 0xFF;
 		bleu = couleur & 0xFF;

@@ -20,7 +20,6 @@ void	print_matrix(t_fdf *data)
 		printf("\n");
 		i++;
 	}
-	printf("eh c fini les gars\n");
 }
 
 int	ft_linelen(char *str) //strlen sans espace, s'arrete a \n ou \0
@@ -32,7 +31,7 @@ int	ft_linelen(char *str) //strlen sans espace, s'arrete a \n ou \0
 	n = 0;
 	while (str[i] && str[i] != '\n')
 	{
-		if (str[i] != ' ')
+		if (str[i] != ' ' && str[i] != '-')
 			n++;
 		i++;
 	}

@@ -19,6 +19,7 @@ void	ft_get_map(t_fdf *data, char *mapfile)
 		i++;
 	}
 	data->map[i] = NULL;
+	ft_printf("%d\n", data->m_cols);
 	close(fd);
 }
 
@@ -47,22 +48,21 @@ void	ft_convert_map(t_fdf *data)
 
 	i = 0;
 	data->z_matrix = malloc(sizeof(t_pt *) * data->m_lines);
-	while (data->map && data->map[i])
+	while (i < data->m_lines)
 	{
 		j = 0;
 		data->z_matrix[i] = malloc(sizeof(t_pt) * data->m_cols);
-		while (data->map[i][j])
+		while (j < data->m_cols)
 		{
 			tab = ft_split(data->map[i][j], ',');
 			data->z_matrix[i][j].z = ft_atoi(tab[0]);
-			data->z_matrix[i][j].color = 0x00219CFF;
+			data->z_matrix[i][j].color = 0x00B0F2B6;
 			data->z_matrix[i][j].x = j;
 			data->z_matrix[i][j].y = i;
 			if (tab[1])
 				data->z_matrix[i][j].color = ft_htoi(tab[1] + 2);
 			j++;
 			free_array(tab);
-			tab = NULL;
 		}
 		i++;
 	}

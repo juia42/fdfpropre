@@ -6,7 +6,7 @@
 /*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:01:13 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/22 08:53:49 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/22 10:25:04 by hchauvin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	handle_inputs(int key, t_fdf *data)
 {
-	ft_printf("%d\n", key);
+	//ft_printf("%d\n", key);
 	if (data == NULL)
 		print_err("PTR TO STRUCT NULL", 0);
 	if (key == XK_Escape)
