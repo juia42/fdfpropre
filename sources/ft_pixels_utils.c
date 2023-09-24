@@ -20,23 +20,16 @@ int	ft_calcul_color(int z,int color)
 	}	
 	return (color);
 }
-/*
-void ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int profondeur) {
-    double angleRadians = angle * M_PI / 180.0;
-    int x = pt->x - (data->m_lines / 2);
-    int y = pt->y - (data->m_cols / 2);
-    pt->x = (data->m_lines / 2) + (int)(x * cos(angleRadians) - y * sin(angleRadians));
-    pt->y = (data->m_cols / 2) + (int)(x * sin(angleRadians) + y * cos(angleRadians));
-}
-*/
 
 void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int profondeur)
 {
-	(void*)data;
 	double	rad_angle = angle * M_PI / 180.0;
-	double	temp_x = pt->x;
-	pt->x = temp_x - pt->y * cos(rad_angle);
-	pt->y = temp_x + pt->y * sin(rad_angle) - (pt->z * profondeur);
+	double	temp_x = pt->x - data->ptcenter->x;
+	double	temp_y = pt->y - data->ptcenter->y;
+
+
+	pt->x = temp_x - temp_y * cos(rad_angle);
+	pt->y = temp_x + temp_y * sin(rad_angle) - (pt->z * profondeur);
 }
 
 /*

@@ -53,5 +53,4 @@ int render(t_fdf *data)
 	ft_draw_map(data);
 	mlx_do_sync(data->mlx_ptr);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->img_ptr, 250, 0);
-	mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);
 }

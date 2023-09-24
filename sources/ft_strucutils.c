@@ -81,10 +81,13 @@ t_fdf	*ft_init_struct(char *mapfile)
 	ft_get_map(data, mapfile);
 	ft_convert_map(data);
 	data->zoom = 10;
-	data->angle = 45;
+	data->angle = 60;
 	data->shift_x = 0;
 	data->shift_y = 0;
 	data->profondeur = 2;
+	data->ptcenter = malloc(sizeof(t_pt));
+	data->ptcenter->x = data->m_cols / 2;
+	data->ptcenter->y = data->m_lines / 2;
 	data->mlx_ptr = mlx_init();
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIN_W, WIN_H, "FdF");
 	data->img = ft_init_img(data);
