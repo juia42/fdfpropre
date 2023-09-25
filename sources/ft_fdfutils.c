@@ -97,6 +97,7 @@ int	destroy(t_fdf *data)
 	free_zmatrix(data);
 	free(data->mlx_ptr);
 	free(data->img);
+	free(data->ptcenter);
 	free(data);
 	data = NULL;
 	exit (0);
