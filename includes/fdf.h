@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/28 14:18:10 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/22 09:24:57 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:49:59 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int		destroy(t_fdf *data);					// Frees everything
 
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
 void	ft_draw_map(t_fdf *data);
-int		ft_calcul_color(int z, int color, int max_z);
+int		ft_calcul_color(int z, int color);
 void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int depth);
 t_pt	ft_calcul_the_way(t_pt p1, t_pt p2);
 t_pt	ft_calculabs(t_pt p1, t_pt p2);

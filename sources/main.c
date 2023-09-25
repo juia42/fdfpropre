@@ -6,7 +6,7 @@
 /*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:05:44 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/25 17:43:57 by mrabat           ###   ########.fr       */
+/*   Updated: 2023/09/25 17:57:06 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int argc, char *argv[])
 {
 	t_fdf	*data;
-	int 	fd;
+	int		fd;
 
 	if (argc != 2 || argc == 1)
 	{
