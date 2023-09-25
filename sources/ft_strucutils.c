@@ -82,7 +82,7 @@ t_fdf	*ft_init_struct(char *mapfile)
 	ft_get_map(data, mapfile);
 	ft_convert_map(data);
 	data->zoom = 6;
-	data->angle = 30;
+	data->angle = 45;
 	data->is_iso = 1;
 	data->shift_x = 550;
 	data->shift_y = 550;
