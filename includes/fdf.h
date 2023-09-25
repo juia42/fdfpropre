@@ -32,6 +32,7 @@ typedef struct s_fdf
 	char	***map;
     int		m_cols;
     int		m_lines;
+	int		is_iso;
     float	zoom;
     int		shift_x;
     int		shift_y;
@@ -67,8 +68,9 @@ t_fdf   *ft_init_struct(char *map_file_name);	// Initializes data structure.
 t_image	*ft_init_img(t_fdf *data);
 void	ft_get_map(t_fdf *data, char *mapfile);	// Get map informations
 void	ft_convert_map(t_fdf *data);			// Adds z and color detail for each point.
-int		handle_inputs(int key, t_fdf *data);	// Grabs input
-int		destroy(t_fdf *data);
+int		handle_inputs(int key, t_fdf *data);	// Handle inputs
+int		destroy(t_fdf *data);					// Frees everything
+
 //line 
 
 void	my_mlx_pixel_put(t_image *img, int x, int y, int color);
@@ -80,7 +82,12 @@ t_pt	ft_calculabs(t_pt p1, t_pt p2);
 void	ft_gesterror(int *err, t_pt d, t_pt s, t_pt *pixel1);
 
 // Render
-int	render(t_fdf *data);
+int		render(t_fdf *data);
+void	render_background(t_fdf *data);
+int 	render_gui(t_fdf *data);
+void	render_txt(t_fdf *data, int intfordisplay, char *txt, char *subtxt);
+void	ft_draw_map(t_fdf *data);
+
 // Debug
 void	print_matrix(t_fdf *data);				// Prints map in terminal.
 

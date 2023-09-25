@@ -12,11 +12,6 @@
 
 #include "../includes/fdf.h"
 
-void	ft_zoomauto()
-{
-
-}
-
 int main(int argc, char *argv[])
 {
 	t_fdf	*data;

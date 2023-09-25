@@ -30,10 +30,17 @@ int	handle_inputs(int key, t_fdf *data)
 		data->shift_x -= 10;
 	if (key == XK_Right)
 		data->shift_x += 10;
+	if (key == XK_KP_Multiply)
+	{
+		if (data->is_iso == 1)
+			data->is_iso = 0;
+		else
+			data->is_iso = 1;
+	}
 	if ((key == XK_KP_Add) || (key == 105))
-		data->zoom += 10;
+		data->zoom += 1;
 	if ((key == XK_KP_Subtract) || (key == 111))
-		data->zoom -= 10;
+		data->zoom -= 1;
 	if ((key == 112))	// p
 		data->profondeur += 1;
 	if ((key == 59))	// ;

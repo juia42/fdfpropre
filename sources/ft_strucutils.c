@@ -80,11 +80,12 @@ t_fdf	*ft_init_struct(char *mapfile)
 	get_height(data, mapfile);
 	ft_get_map(data, mapfile);
 	ft_convert_map(data);
-	data->zoom = 10;
-	data->angle = 60;
-	data->shift_x = 0;
-	data->shift_y = 0;
-	data->profondeur = 2;
+	data->zoom = 6;
+	data->angle = 30;
+	data->is_iso = 1;
+	data->shift_x = 100;
+	data->shift_y = 100;
+	data->profondeur = 1;
 	data->ptcenter = malloc(sizeof(t_pt));
 	data->ptcenter->x = data->m_cols / 2;
 	data->ptcenter->y = data->m_lines / 2;

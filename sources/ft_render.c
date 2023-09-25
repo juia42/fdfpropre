@@ -27,9 +27,13 @@ void	render_txt(t_fdf *data, int intfordisplay, char *txt, char *subtxt)
 
 	posx = 100;
 	if (txt == "Profondeur: ")
-	posx = 200;
+		posx = 200;
 	if (txt == "Angle: ")
-	posx = 300;
+		posx = 300;
+	if (txt == "Shift X: ")
+		posx = 400;
+	if (txt == "Shift Y: ")
+		posx = 500;
 	inttochar = ft_itoa(intfordisplay);
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx, 0xFFFFFF, txt);
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx + 20, 0xFFFFFF,	inttochar);
@@ -42,6 +46,8 @@ int render_gui(t_fdf *data)
 	render_txt(data, data->zoom, "Zoom: ", "+ / - (Pav Num)");
 	render_txt(data, data->profondeur, "Profondeur: ", "; / p");
 	render_txt(data, data->angle, "Angle: ", "k / l");
+	render_txt(data, data->shift_x, "Shift X: ", "<- / ->");
+	render_txt(data, data->shift_y, "Shift Y: ", "A / V");
 }
 
 

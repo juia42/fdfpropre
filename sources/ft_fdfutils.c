@@ -21,7 +21,7 @@ void	print_matrix(t_fdf *data)
 		i++;
 	}
 }
-
+/*
 int	ft_linelen(char *str) //strlen sans espace, s'arrete a \n ou \0
 {
 	int i;
@@ -32,12 +32,40 @@ int	ft_linelen(char *str) //strlen sans espace, s'arrete a \n ou \0
 	while (str[i] && str[i] != '\n')
 	{
 		if (str[i] == ',')
-			i+=9;
+		{
+			while (str[i] != ' ')
+				i++;
+		}
 		if (str[i] != ' ' && str[i] != '-')
 			n++;
 		i++;
 	}
 	return (n);
+}
+*/
+int ft_linelen(char *str)
+{
+    int i = 0;
+    int n = 0;
+    int in_color = 0;
+
+    while (str[i] && str[i] != '\n')
+    {
+        if (str[i] == ',')
+            in_color = 1;
+        else if (str[i] != ' ')
+        {
+            if (!in_color)
+                n++;
+			if (in_color && str[i + 1] == ' ')
+			{
+				i++;
+				in_color = 0;
+			}
+        }
+        i++;
+    }
+    return n;
 }
 
 void free_zmatrix(t_fdf *data)

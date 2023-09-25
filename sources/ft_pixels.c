@@ -21,7 +21,7 @@ void ft_tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
     d = ft_calculabs(pixel1,pixel2);
 	err = 0;
 	maxhuba = d.x + d.y;
-	color = ft_calcul_color(pixel2.z, pixel2.color);
+	color = ft_calcul_color(pixel1.z, pixel1.color);
     while (maxhuba--)
     {
 		//ft_printf("Drawing point at (%d, %d) with z = %d\n", pixel1.x, pixel1.y, pixel1.z);
@@ -44,8 +44,11 @@ void ft_prepare_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 	pixel1.y *= data->zoom;
 	pixel2.x *= data->zoom;
 	pixel2.y *= data->zoom;
-	ft_trans_to_isometric(data, &pixel1, data->angle, data->profondeur);
-	ft_trans_to_isometric(data, &pixel2, data->angle, data->profondeur);
+	if (data->is_iso != 0)
+	{
+		ft_trans_to_isometric(data, &pixel1, data->angle, data->profondeur);
+		ft_trans_to_isometric(data, &pixel2, data->angle, data->profondeur);
+	}
 	pixel1.x += data->ptcenter->x;
 	pixel1.y += data->ptcenter->y;
 	pixel2.x += data->ptcenter->x;
