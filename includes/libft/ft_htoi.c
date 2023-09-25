@@ -3,42 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_htoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 09:40:14 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/14 14:32:13 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/25 17:27:43 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_htoi(char s[])
-{   
-    int i;
-    int c;
-    int n;
-
-    i = 0;
-    c = 0;
-    n = 0;
-    while ((c = s[i]) != '\0')
-    {   
-        n *= 16; 
-        if (i == 0 && c == '0')
-        {   
-            c = s[++i];
-            if (c != 'x' && c != 'X')
-                --i;
-        }
-        else if (c >= '0' && c <= '9')
-            n += c - '0'; 
-        else if (c >= 'a' && c <= 'f')
-            n += 10 + (c - 'a');
-        else if (c >= 'A' && c <= 'F')
-            n += 10 + (c - 'A');
-        else
-            return (n);
-        ++i;
-    }
-    return (n);
+int	ft_is_hex_digit(char c)
+{
+	return (( c>= '0') && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
 }
+
+int	ft_htoi(char s[])
+{
+	int	i = 0;
+	int n = 0;
+
+	if (s[0] =='0' && (s[1] == 'x' || s[1] == 'X'))
+		i = 2;
+	while (s[i] != '\0')
+	{
+		if (!ft_is_hex_digit(s[i]))
+			return (n);
+		n *=16;
+		if (s[i] >= '0' && s[i] <= '9')
+			n += s[i] - '0';
+		else if(s[i] >= 'a' && s[i] <= 'f')
+			n += 10 + (s[i] - 'a');
+		else if(s[i] >= 'A' && s[i] <= 'F')
+			n += 10 + (s[i] - 'A');
+		i++;
+	}
+		return (n);
+}
+
