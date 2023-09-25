@@ -26,6 +26,7 @@ int	main(int argc, char *argv[])
 	print_matrix(data);
 	render(data);
 	mlx_hook(data->win_ptr, 2, 1L << 0, handle_inputs, (void *) data);
+	mlx_hook(data->win_ptr, 17, 1L, destroy, (void *) data);
 	mlx_loop(data->mlx_ptr);
 	destroy(data);
 	return (0);
