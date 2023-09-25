@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+         #
+#    By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 17:51:43 by mrabat            #+#    #+#              #
-#    Updated: 2023/09/18 13:17:23 by hchauvin         ###   ########.fr        #
+#    Updated: 2023/09/25 13:22:51 by mrabat           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,26 +25,16 @@ SRCDIR = sources
 OBJDIR = obj
 INCLUDEDIR = includes
 LIBFTDIR = includes/libft
-LIBMINIDIR_MACOS = includes/${MINILIBX}_macos
-LIBMINIDIR_ORIGIN = includes/${MINILIBX}_linux
+LIBMINIDIR_ORIGIN = includes/minilibx_linux
 
 # Compilateur et options
 CC = gcc
-CFLAGS = -g 
-#-Wall -Werror -Wextra -g
+CFLAGS = -g -Wall -Werror -Wextra -g
 
 MACFLY =  -lXext -lX11 -lm -lbsd 
-# Dectection du system 
-UNAME_S := $(shell uname -s)
-
-ifeq ($(UNAME_S),Darwin)
-	MACFLY = -framework OpenGL -framework AppKit
-	LIBMINIDIR_ORIGIN = $(LIBMINIDIR_MACOS)
-endif
-
 # Noms des fichiers
 LIBFT = $(LIBFTDIR)/libft.a
-LIBMINI = $(INCLUDEDIR)/libmlx.a
+LIBMINI = includes/minilibx_linux/libmlx.a
 
 # Fichiers sources et objets
 SRC = $(wildcard $(SRCDIR)/*.c)
@@ -57,7 +47,7 @@ all: $(NAME)
 $(shell mkdir -p $(OBJDIR))
 
 # Règle de construction de l'exécutable
-$(NAME): $(LIBFT) $(LIBMINI) $(OBJ)
+$(NAME): $(LIBMINI) $(LIBFT) $(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(LIBMINI) $(MACFLY) -o $(NAME)
 	@echo "$(BLUE)$(NAME) READY IN BIN FOLDER$(DEF_COLOR)"
 
@@ -72,21 +62,19 @@ $(LIBFT):
 	@echo "$(YELLOW)LIBFT COMPILED$(DEF_COLOR)"
 
 $(LIBMINI):
-	$(MAKE) -Cs $(LIBMINIDIR_ORIGIN)
-	$(shell yes | cp -r $(LIBMINIDIR_ORIGIN)/mlx.h $(INCLUDEDIR)/mlx.h)
-	$(shell yes | cp -r $(LIBMINIDIR_ORIGIN)/libmlx.a  $(INCLUDEDIR)/libmlx.a)
+	$(MAKE) -C $(LIBMINIDIR_ORIGIN)
 	@echo "$(GREEN)LIBMINI COMPILED$(DEF_COLOR)"
 
 # Règle de nettoyage des fichiers objets
 clean:
 	$(MAKE) clean -C $(LIBFTDIR)
-	rm $(INCLUDEDIR)/libmlx.a
+	$(MAKE) clean -C $(LIBMINIDIR_ORIGIN)
 	rm -rf $(OBJDIR)
 	@echo "$(BLUE)cleaned!$(DEF_COLOR)"
 
 # Règle de nettoyage complet
 fclean: clean
-	$(MAKE) fclean -C $(LIBFTDIR)
+	#$(MAKE) fclean -Cs $(LIBFTDIR)
 	rm $(NAME)
 	@echo "$(RED)cleaned!$(DEF_COLOR)"
 

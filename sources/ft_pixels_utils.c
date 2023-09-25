@@ -1,6 +1,6 @@
 #include "../includes/fdf.h"
 
-int	ft_calcul_color(int z, int color)
+int	ft_calcul_color(int z, int color, int max_z)
 {
 	int	couleur;
 	int	rouge;
@@ -15,7 +15,7 @@ int	ft_calcul_color(int z, int color)
 		rouge = (couleur >> 16) & 0xFF;
 		vert = (couleur >> 8) & 0xFF;
 		bleu = couleur & 0xFF;
-		bleu = bleu * z / 9;
+		bleu = bleu * z / max_z;
 		color = ((rouge << 16) | (vert << 8) | bleu);
 	}
 	return (color);
@@ -29,24 +29,11 @@ void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int depth)
 
 	rad_angle = angle * M_PI / 180.0;
 	temp_x = pt->x - data->ptcenter->x;
-	temp_y pt->y - data->ptcenter->y;
+	temp_y = pt->y - data->ptcenter->y;
 	pt->x = temp_x - temp_y * cos(rad_angle);
 	pt->y = temp_x + temp_y * sin(rad_angle) - (pt->z * depth);
 }
 
-/*
-void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, int angle, int profondeur)
-{
-	double	rad_angle = angle * M_PI / 180.0;
-	double	rad_2 = (angle * 2) * M_PI / 180.0;
-	double	temp_x = pt->x;
-	pt->x = cos(rad_angle) * (pt->y - data->m_lines / 2) 
-			- cos(rad_angle) * (pt->x - data->m_cols / 2);
-	pt->y = -pt->z * cos(rad_2) * 2 
-			+ sin(rad_angle) * (pt->x - data->m_lines / 2)
-			+ sin(rad_angle) * (pt->y - data->m_cols / 2);
-}
-*/
 t_pt	ft_calcul_the_way(t_pt p1, t_pt p2)
 {
 	t_pt	s;

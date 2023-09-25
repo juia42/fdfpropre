@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_inputs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hchauvin <hchauvin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mrabat <mrabat@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 10:01:13 by hchauvin          #+#    #+#             */
-/*   Updated: 2023/09/22 13:47:20 by hchauvin         ###   ########.fr       */
+/*   Updated: 2023/09/25 13:31:05 by mrabat           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int	handle_inputs2(int key, t_fdf *data)
+void	handle_inputs2(int key, t_fdf *data)
 {
 	if (key == XK_KP_Multiply)
 	{

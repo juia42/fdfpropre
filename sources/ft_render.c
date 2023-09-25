@@ -23,16 +23,18 @@ void	render_txt(t_fdf *data, int intfordisplay, char *txt, char *subtxt)
 	char	*inttochar;
 	int		posx;
 	int		cr;
+	int		lentxt;
 
+	lentxt = ft_strlen(txt);
 	posx = 100;
 	cr = 0xFFFFFF;
-	if (txt == "Profondeur: ")
+	if ((ft_strncmp(txt, "Profondeur: ", lentxt) == 0))
 		posx = 200;
-	if (txt == "Angle: ")
+	if ((ft_strncmp(txt, "Angle: ", lentxt) == 0))
 		posx = 300;
-	if (txt == "Shift X: ")
+	if ((ft_strncmp(txt, "Shift X: ", lentxt) == 0))
 		posx = 400;
-	if (txt == "Shift Y: ")
+	if ((ft_strncmp(txt, "Shift Y: ", lentxt) == 0))
 		posx = 500;
 	inttochar = ft_itoa(intfordisplay);
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx, cr, txt);
@@ -41,7 +43,7 @@ void	render_txt(t_fdf *data, int intfordisplay, char *txt, char *subtxt)
 	free(inttochar);
 }
 
-int	render_gui(t_fdf *data)
+void	render_gui(t_fdf *data)
 {
 	render_txt(data, data->zoom, "Zoom: ", "+ / - (Pav Num)");
 	render_txt(data, data->profondeur, "Profondeur: ", "; / p");
@@ -50,12 +52,13 @@ int	render_gui(t_fdf *data)
 	render_txt(data, data->shift_y, "Shift Y: ", "A / V");
 }
 
-int	render(t_fdf *data)
+void	render(t_fdf *data)
 {
-	mlx_clear_window(data->mlx_ptr, data->win_ptr);
+	//mlx_clear_window(data->mlx_ptr, data->win_ptr);
 	render_background(data);
 	render_gui(data);
 	ft_draw_map(data);
 	mlx_do_sync(data->mlx_ptr);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img->img_ptr, 250, 0);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,
+		data->img->img_ptr, 250, 0);
 }

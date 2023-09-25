@@ -103,5 +103,5 @@ t_image	*ft_init_img(t_fdf *data)
 	img = malloc(sizeof(t_image));
 	img->img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
 	img->addr = mlx_get_data_addr(img->img_ptr, &(img->bpp), &(img->line_len), &(img->endian));
-	return (image);
+	return (img);
 }
