@@ -28,7 +28,7 @@ int	ft_calcul_color(int z, int color, int max_z)
 	}
 	return (newcolor);
 }
-
+/*
 void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int depth)
 {
 	double	rad_angle;
@@ -40,6 +40,19 @@ void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int depth)
 	temp_y = pt->y - data->ptcenter->y;
 	pt->x = temp_x - temp_y * cos(rad_angle);
 	pt->y = temp_x + temp_y * sin(rad_angle) - (pt->z * depth);
+}
+*/
+
+void	ft_trans_to_isometric(t_fdf *data, t_pt *point, float angle, int depth)
+{
+	float	x_iso;
+	float	y_iso;
+
+	(void)data;
+	x_iso = (point->x - point->y) * cos(angle * M_PI / 180);
+	y_iso = -point->z + (point->x + point->y) * sin(angle * M_PI / 180);
+	point->x = x_iso;
+	point->y = y_iso - (point->z * depth);
 }
 
 t_pt	ft_calcul_the_way(t_pt p1, t_pt p2)
