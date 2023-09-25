@@ -61,7 +61,7 @@ void	ft_convert_map(t_fdf *data)
 		{
 			tab = ft_split(data->map[i][j], ',');
 			data->z_matrix[i][j].z = ft_atoi(tab[0]);
-			data->z_matrix[i][j].color = 0x00B0F2B6;
+			data->z_matrix[i][j].color = 0;
 			data->z_matrix[i][j].x = j;
 			data->z_matrix[i][j].y = i;
 			if (tab[1])
@@ -84,8 +84,8 @@ t_fdf	*ft_init_struct(char *mapfile)
 	data->zoom = 6;
 	data->angle = 30;
 	data->is_iso = 1;
-	data->shift_x = 100;
-	data->shift_y = 100;
+	data->shift_x = 550;
+	data->shift_y = 550;
 	data->profondeur = 1;
 	data->ptcenter = malloc(sizeof(t_pt));
 	data->ptcenter->x = data->m_cols / 2;
@@ -102,6 +102,7 @@ t_image	*ft_init_img(t_fdf *data)
 
 	img = malloc(sizeof(t_image));
 	img->img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
-	img->addr = mlx_get_data_addr(img->img_ptr, &(img->bpp), &(img->line_len), &(img->endian));
+	img->addr = mlx_get_data_addr(img->img_ptr,
+			&(img->bpp), &(img->line_len), &(img->endian));
 	return (img);
 }

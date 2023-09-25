@@ -1,24 +1,32 @@
 #include "../includes/fdf.h"
 
-int	ft_calcul_color(int z, int color, int max_z)
+int ft_calcul_color(int z, int color, int max_z)
 {
-	int	couleur;
-	int	rouge;
-	int	bleu;
-	int	vert;
+    int newcolor;
+    int rouge;
+    int bleu;
+    int vert;
 
-	color = color;
-	if (z > 0)
-	{
-		color = 0x00B0F2B6;
-		couleur = color;
-		rouge = (couleur >> 16) & 0xFF;
-		vert = (couleur >> 8) & 0xFF;
-		bleu = couleur & 0xFF;
-		bleu = bleu * z / max_z;
-		color = ((rouge << 16) | (vert << 8) | bleu);
-	}
-	return (color);
+    if (z > 0)
+    {
+        if (color == 0)
+            newcolor = 0x800080;
+        else
+        	newcolor = color;
+        rouge = (newcolor >> 16) & 0xFF;
+        vert = (newcolor >> 8) & 0xFF;
+        bleu = newcolor & 0xFF;
+        bleu = bleu + (255 - bleu) * z / max_z;
+        newcolor = ((rouge << 16) | (vert << 8) | bleu);
+    }
+    else
+    {
+        if (color == 0)
+            newcolor = 0xFF00FF;
+        else
+            newcolor = color;
+    }
+    return newcolor;
 }
 
 void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int depth)
