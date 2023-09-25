@@ -1,6 +1,5 @@
 #include "../includes/fdf.h"
 
-// Prints map matrix for debug purposes
 void	print_matrix(t_fdf *data)
 {
 	int	i;
@@ -21,54 +20,36 @@ void	print_matrix(t_fdf *data)
 		i++;
 	}
 }
-/*
-int	ft_linelen(char *str) //strlen sans espace, s'arrete a \n ou \0
+
+int	ft_linelen(char *str)
 {
-	int i;
-	int n;
+	int	i;
+	int	n;
+	int	in_color;
 
 	i = 0;
 	n = 0;
+	in_color = 0;
 	while (str[i] && str[i] != '\n')
 	{
 		if (str[i] == ',')
+			in_color = 1;
+		else if (str[i] != ' ')
 		{
-			while (str[i] != ' ')
-				i++;
-		}
-		if (str[i] != ' ' && str[i] != '-')
-			n++;
-		i++;
-	}
-	return (n);
-}
-*/
-int ft_linelen(char *str)
-{
-    int i = 0;
-    int n = 0;
-    int in_color = 0;
-
-    while (str[i] && str[i] != '\n')
-    {
-        if (str[i] == ',')
-            in_color = 1;
-        else if (str[i] != ' ')
-        {
-            if (!in_color)
-                n++;
+			if (!in_color)
+				n++;
 			if (in_color && str[i + 1] == ' ')
 			{
 				i++;
 				in_color = 0;
 			}
-        }
-        i++;
-    }
-    return n;
+		}
+		i++;
+	}
+	return (n);
 }
 
-void free_zmatrix(t_fdf *data)
+void	free_zmatrix(t_fdf *data)
 {
 	int	i;
 
@@ -80,11 +61,11 @@ void free_zmatrix(t_fdf *data)
 	}
 	free(data->z_matrix);
 }
-// free le contenu de la structure
+
 void	free_map_data(t_fdf *data)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -97,17 +78,14 @@ void	free_map_data(t_fdf *data)
 			data->map[i][j] = NULL;
 			j++;
 		}
-		free(data->map[i]); 
+		free(data->map[i]);
 		data->map[i] = NULL;
 		i++;
 	}
 	free(data->map);
 	data->map = NULL;
-	//free le reste de la structure
-
 }
 
-// destruit tout ce qui est lie a la mlx et free la structure
 int	destroy(t_fdf *data)
 {
 	mlx_destroy_image(data->mlx_ptr, data->img->img_ptr);

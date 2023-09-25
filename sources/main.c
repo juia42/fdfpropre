@@ -12,22 +12,21 @@
 
 #include "../includes/fdf.h"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_fdf	*data;
-	
+
 	if (argc != 2 || argc == 1)
 	{
-		print_err(ERR_ARG,0);
-		return(1);
+		print_err(ERR_ARG, 0);
+		return (1);
 	}
 	data = ft_init_struct(argv[1]);
-	data->zoom = (( WIN_W / data->m_lines + WIN_H / data->m_cols) / 5);
+	data->zoom = ((WIN_W / data->m_lines + WIN_H / data->m_cols) / 5);
 	print_matrix(data);
 	render(data);
-	mlx_hook(data->win_ptr, 2, 1L<<0, handle_inputs, (void *)data);
+	mlx_hook(data->win_ptr, 2, 1L << 0, handle_inputs, (void *) data);
 	mlx_loop(data->mlx_ptr);
 	destroy(data);
-	return(0);
+	return (0);
 }
-

@@ -1,35 +1,37 @@
 #include "../includes/fdf.h"
 
-int	ft_calcul_color(int z,int color)
+int	ft_calcul_color(int z, int color)
 {
-	int couleur; 
-	int rouge;
-	int bleu;
+	int	couleur;
+	int	rouge;
+	int	bleu;
 	int	vert;
 
 	color = color;
 	if (z > 0)
-	{	
+	{
 		color = 0x00B0F2B6;
 		couleur = color;
 		rouge = (couleur >> 16) & 0xFF;
 		vert = (couleur >> 8) & 0xFF;
 		bleu = couleur & 0xFF;
 		bleu = bleu * z / 9;
-		color = ((rouge << 16) | (vert << 8) | bleu); 
-	}	
+		color = ((rouge << 16) | (vert << 8) | bleu);
+	}
 	return (color);
 }
 
-void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int profondeur)
+void	ft_trans_to_isometric(t_fdf *data, t_pt *pt, float angle, int depth)
 {
-	double	rad_angle = angle * M_PI / 180.0;
-	double	temp_x = pt->x - data->ptcenter->x;
-	double	temp_y = pt->y - data->ptcenter->y;
+	double	rad_angle;
+	double	temp_x;
+	double	temp_y;
 
-
+	rad_angle = angle * M_PI / 180.0;
+	temp_x = pt->x - data->ptcenter->x;
+	temp_y pt->y - data->ptcenter->y;
 	pt->x = temp_x - temp_y * cos(rad_angle);
-	pt->y = temp_x + temp_y * sin(rad_angle) - (pt->z * profondeur);
+	pt->y = temp_x + temp_y * sin(rad_angle) - (pt->z * depth);
 }
 
 /*
@@ -69,22 +71,21 @@ t_pt	ft_calculabs(t_pt p1, t_pt p2)
 
 void	ft_gesterror(int *err, t_pt d, t_pt s, t_pt *pixel1)
 {
-	int err2;
+	int	err2;
 	int	x;
 	int	y;
 
 	x = pixel1->x;
 	y = pixel1->y;
-
 	err2 = 2 * (*err);
-    if (err2 > -d.x)
-    {
-    	*err -= d.y;
-    	pixel1->x = x + (int)s.x;
-    }
-    if (err2 < d.y)
-    {
-    	*err += d.x;
-    	pixel1->y = y + (int)s.y;
-    }
+	if (err2 > -d.x)
+	{
+		*err -= d.y;
+		pixel1->x = x + (int)s.x;
+	}
+	if (err2 < d.y)
+	{
+		*err += d.x;
+		pixel1->y = y + (int)s.y;
+	}
 }

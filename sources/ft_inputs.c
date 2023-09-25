@@ -12,11 +12,31 @@
 
 #include "../includes/fdf.h"
 
+int	handle_inputs2(int key, t_fdf *data)
+{
+	if (key == XK_KP_Multiply)
+	{
+		if (data->is_iso == 1)
+			data->is_iso = 0;
+		else
+			data->is_iso = 1;
+	}
+	if ((key == XK_KP_Add) || (key == 105))
+		data->zoom += 1;
+	if ((key == XK_KP_Subtract) || (key == 111))
+		data->zoom -= 1;
+	if ((key == 112))
+		data->profondeur += 1;
+	if ((key == 59))
+		data->profondeur -= 1;
+	if ((key == 107))
+		data->angle += 1;
+	if ((key == 108))
+		data->angle -= 1;
+}
+
 int	handle_inputs(int key, t_fdf *data)
 {
-	//ft_printf("%d\n", key);
-	if (data == NULL)
-		print_err("PTR TO STRUCT NULL", 0);
 	if (key == XK_Escape)
 	{
 		destroy(data);
@@ -30,25 +50,7 @@ int	handle_inputs(int key, t_fdf *data)
 		data->shift_x -= 10;
 	if (key == XK_Right)
 		data->shift_x += 10;
-	if (key == XK_KP_Multiply)
-	{
-		if (data->is_iso == 1)
-			data->is_iso = 0;
-		else
-			data->is_iso = 1;
-	}
-	if ((key == XK_KP_Add) || (key == 105))
-		data->zoom += 1;
-	if ((key == XK_KP_Subtract) || (key == 111))
-		data->zoom -= 1;
-	if ((key == 112))	// p
-		data->profondeur += 1;
-	if ((key == 59))	// ;
-		data->profondeur -= 1;
-	if ((key == 107))	// k
-		data->angle += 1;
-	if ((key == 108))	// l
-		data->angle -= 1;
+	handle_inputs2(key, data);
 	render(data);
 	return (0);
 }

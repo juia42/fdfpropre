@@ -17,15 +17,15 @@ void	render_background(t_fdf *data)
 		y++;
 	}
 }
-// Faire un rectangle sur le cote gauche de l'ecran,
-// Sur lequel afficher les informations liees a la visu.
-// Decaler l'image de sa largeur.
+
 void	render_txt(t_fdf *data, int intfordisplay, char *txt, char *subtxt)
 {
 	char	*inttochar;
 	int		posx;
+	int		cr;
 
 	posx = 100;
+	cr = 0xFFFFFF;
 	if (txt == "Profondeur: ")
 		posx = 200;
 	if (txt == "Angle: ")
@@ -35,13 +35,13 @@ void	render_txt(t_fdf *data, int intfordisplay, char *txt, char *subtxt)
 	if (txt == "Shift Y: ")
 		posx = 500;
 	inttochar = ft_itoa(intfordisplay);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx, 0xFFFFFF, txt);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx + 20, 0xFFFFFF,	inttochar);
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx + 35, 0xFFFFFF,	subtxt);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx, cr, txt);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx + 20, cr, inttochar);
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 50, posx + 35, cr, subtxt);
 	free(inttochar);
 }
 
-int render_gui(t_fdf *data)
+int	render_gui(t_fdf *data)
 {
 	render_txt(data, data->zoom, "Zoom: ", "+ / - (Pav Num)");
 	render_txt(data, data->profondeur, "Profondeur: ", "; / p");
@@ -50,8 +50,7 @@ int render_gui(t_fdf *data)
 	render_txt(data, data->shift_y, "Shift Y: ", "A / V");
 }
 
-
-int render(t_fdf *data)
+int	render(t_fdf *data)
 {
 	mlx_clear_window(data->mlx_ptr, data->win_ptr);
 	render_background(data);

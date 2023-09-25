@@ -2,10 +2,10 @@
 
 void	ft_get_map(t_fdf *data, char *mapfile)
 {
-	int	fd;
+	int		fd;
 	char	*line;
 	char	*tmpline;
-	int i;
+	int		i;
 	char	**tab;
 
 	i = 0;
@@ -30,7 +30,7 @@ void	ft_get_map(t_fdf *data, char *mapfile)
 
 void	get_height(t_fdf *data, char *mapfile)
 {
-	int	fd;
+	int		fd;
 	char	*line;
 
 	data->m_lines = 0;
@@ -47,8 +47,8 @@ void	get_height(t_fdf *data, char *mapfile)
 
 void	ft_convert_map(t_fdf *data)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 	char	**tab;
 
 	i = 0;
@@ -76,6 +76,7 @@ void	ft_convert_map(t_fdf *data)
 t_fdf	*ft_init_struct(char *mapfile)
 {
 	t_fdf	*data;
+
 	data = malloc(sizeof(t_fdf));
 	get_height(data, mapfile);
 	ft_get_map(data, mapfile);
@@ -97,10 +98,10 @@ t_fdf	*ft_init_struct(char *mapfile)
 
 t_image	*ft_init_img(t_fdf *data)
 {
-	t_image	*image;
+	t_image	*img;
 
-	image = malloc(sizeof(t_image));
-	image->img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
-	image->addr = mlx_get_data_addr(image->img_ptr, &(image->bpp), &(image->line_len), &(image->endian));
+	img = malloc(sizeof(t_image));
+	img->img_ptr = mlx_new_image(data->mlx_ptr, WIN_W, WIN_H);
+	img->addr = mlx_get_data_addr(img->img_ptr, &(img->bpp), &(img->line_len), &(img->endian));
 	return (image);
 }
