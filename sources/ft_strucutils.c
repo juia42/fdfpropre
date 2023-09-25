@@ -9,8 +9,8 @@ void	ft_get_map(t_fdf *data, char *mapfile)
 	char	**tab;
 
 	i = 0;
-	data->map = malloc(sizeof(char **) * (data->m_lines + 1));
 	fd = open(mapfile, O_RDONLY);
+	data->map = malloc(sizeof(char **) * (data->m_lines + 1));
 	line = get_next_line(fd, 0);
 	tmpline = line;
 	tab = ft_split(tmpline, ' ');
@@ -35,6 +35,8 @@ void	get_height(t_fdf *data, char *mapfile)
 
 	data->m_lines = 0;
 	fd = open(mapfile, O_RDONLY);
+	if (!fd)
+		print_err("CANT OPEN MAP", 0);
 	line = get_next_line(fd, 0);
 	while (line)
 	{

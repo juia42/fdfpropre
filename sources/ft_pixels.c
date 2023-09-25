@@ -20,7 +20,7 @@ void	ft_tracer_ligne(t_fdf *data, t_pt pixel1, t_pt pixel2)
 	d = ft_calculabs(pixel1, pixel2);
 	err = 0;
 	maxhuba = d.x + d.y;
-	color = ft_calcul_color(pixel1.z, pixel1.color, 10);
+	color = ft_calcul_color(pixel1.z, pixel1.color);
 	while (maxhuba--)
 	{
 		if (pixel1.x == pixel2.x && pixel1.y == pixel2.y)
